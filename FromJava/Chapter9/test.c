@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int lastDigit(int*);
+
+main()
+{
+    int n;
+    
+    printf("Enter number: ");
+    scanf("%d", &n);
+    
+    printf("\n%d\n\n", lastDigit(&n));
+    printf("%d\n\n", n);
+}
+
+int lastDigit(int *n)
+{
+    *n = *n / 10;
+    return *n;
+}

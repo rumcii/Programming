@@ -1,0 +1,19 @@
+package com.hackbulgaria.programming51.week2;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Coffee lavazza = new Coffee();
+		lavazza.name = "Lavazza";
+		lavazza.price = 1.00f;
+		
+		System.out.println(lavazza);
+
+		CoffeeMachine newMachine = new CoffeeMachine(lavazza, 1.2);
+		
+		newMachine.addCoffee(newMachine.name);
+		
+		
+	}
+
+}

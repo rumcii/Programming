@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "mobileStructures.h"
+
+void BatteryConstructor(struct Battery*);
+void BatteryFullConstructor(struct Battery*, char*, int, int);
+char* getBatteryModel(struct Battery*);
+int getBatteryIdleTime(struct Battery*);
+int getBatteryTalkTime(struct Battery*);
+void setBatteryModel(struct Battery*, char*);
+void setBatteryIdleTime(struct Battery*, int);
+void setBatteryTalkTime(struct Battery*, int);
+struct Battery* makeBattery(char*, int, int);
+void PrintBattery(struct Battery*);
+
+void BatteryConstructor(struct Battery *battery)
+{
+    strcpy(battery -> model, "no model");
+    battery -> talkTime = 0;
+    battery -> idleTime = 0;
+}
+
+void BatteryFullConstructor(struct Battery *battery, char model[], int talkTime, int idleTime)
+{
+    strcpy(battery -> model, model);
+    battery -> talkTime = talkTime;
+    battery -> idleTime = idleTime;
+}
+
+struct Battery* makeBattery(char model[], int talkTime, int idleTime)
+{
+    struct Battery *temp = (struct Battery*)malloc(sizeof(struct Battery));
+    strcpy(temp -> model, model);
+    temp -> idleTime - idleTime;
+    temp -> talkTime = talkTime;
+    return temp;
+}
+
+void PrintBattery(struct Battery *battery)
+{
+    printf("\n\tBattery info:\n");
+    printf("Battery model: %s\n", battery -> model);
+    printf("Battery talk time: %d\n", battery -> talkTime);
+    printf("Battery idle time: %d\n\n", battery -> idleTime);
+}
+
+char* getBatteryModel(struct Battery *battery)
+{
+    return battery -> model;
+}
+
+int getBatteryIdleTime(struct Battery *battery)
+{
+    return battery -> idleTime;
+}
+
+int getBatteryTalkTime(struct Battery *battery)
+{
+    return battery -> talkTime;
+}
+
+void setBatteryIdleTime(struct Battery *battery, int idleTime)
+{
+    battery -> idleTime = idleTime;
+}
+
+void setBatteryTalkTime(struct Battery *battery, int talkTime)
+{
+    battery -> talkTime = talkTime;
+}
+
+void setBatteryModel(struct Battery *battery, char model[])
+{
+    strcpy(battery -> model, model);
+}

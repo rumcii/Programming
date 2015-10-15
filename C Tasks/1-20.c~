@@ -1,0 +1,63 @@
+/*Exercise 1-20. Write a program detab that replaces tabs in the input with the proper number*/
+/*of blanks to space to the next tab stop. Assume a fixed set of tab stops, say every n columns.*/
+/*Should n be a variable or a symbolic parameter?*/
+
+#include <stdio.h>
+
+#define MAXLINE 100
+#define IN 1
+#define OUT 0
+
+void tabChange(char[], int);
+int count;
+
+main()
+{
+    int c;
+    int i = 0;
+    char arr[MAXLINE];
+    count = 0;
+    
+    while ((c = getchar()) != EOF) {
+        arr[i] = c;
+        i++;
+        count++;
+    }
+    tabChange(arr, 2);
+    return 0;
+}
+
+void tabChange(char arr[], int n) // n is number of spaces to change tabs
+{
+    int i;
+    char result[MAXLINE + n];
+    int j;
+    int index;
+    int state = OUT;
+    int repeater = 0;
+    //printf("%ld\n", sizeof(arr));
+    
+    for (i = 0; i <= count; i++) {
+        if (arr[i] == '\t') {
+            state = IN;
+            index = i + repeater;
+            for (j = 0; j < n; j++) {
+                result[index] = ' ';
+                index++;
+            }
+            index = i;
+            repeater++;
+            //printf("1%c\n", result[i]);
+        }
+        else if (index < i && state == IN) {
+            result[i + repeater] = arr[i];
+            //printf("2.%c\n", result[i + n - 1]);
+        }
+        else {
+            result[i] = arr[i];
+            //printf("3.%c\n", result[i]);
+        }
+    }
+    result[i + repeater - 1] = '\0';
+    printf("%s\n\n", result);
+}

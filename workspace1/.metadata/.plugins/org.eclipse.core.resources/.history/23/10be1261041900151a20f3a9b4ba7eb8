@@ -1,0 +1,15 @@
+package com.hackbulgaria.programming51.week3;
+
+public class Arr {
+	
+	public static String toString(int [] a) {
+		String result = "";
+		for (int i = 0; i < a.length - 1; i++) {
+			result += a[i] + ", "; 
+		}
+		
+		result += a[a.length - 1];
+		return result;
+	}
+
+}

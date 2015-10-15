@@ -1,0 +1,6 @@
+INDEX VERSION 1.127+/home/ruci/workspace/.metadata/.plugins/org.eclipse.jdt.core
+2030063481.index
+2012739359.index
+2583270963.index
+15779721.index
+2089348824.index

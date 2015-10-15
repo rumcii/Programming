@@ -1,0 +1,12 @@
+//extern struct Battery;
+#include "mobileStructures.h"
+
+void BatteryConstructor(struct Battery*);
+void BatteryFullConstructor(struct Battery*, char*, int, int);
+char* getBatteryModel(struct Battery*);
+int getBatteryIdleTime(struct Battery*);
+int getBatteryTalkTime(struct Battery*);
+void setBatteryModel(struct Battery*, char*);
+void setBatteryIdleTime(struct Battery*, int);
+void setBatteryTalkTime(struct Battery*, int);
+struct Battery* makeBattery(char*, int, int);

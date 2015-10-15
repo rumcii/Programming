@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+char intToBinary(int);
+
+main()
+{
+    printf("The result is: %c\n", intToBinary(5));
+}
+
+char intToBinary(int a) {
+    char cBinary = '\0';
+
+    int iDigit;
+
+    while (a != 0) {
+	iDigit = a % 10;
+
+	cBinary = 'iDigit' + cBinary;
+
+	a = a / 10;
+    }
+
+    return cBinary
+}

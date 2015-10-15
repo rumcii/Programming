@@ -1,0 +1,11 @@
+package com.hackbulgaria.programming51.week2;
+
+public class Main {
+
+	public static void main(String[] args) {
+		a = "cheese";
+		System.out.println(a.equals("cheese"));
+		
+	}
+
+}

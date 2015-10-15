@@ -1,0 +1,161 @@
+/*Дефинирайте клас Student, който съдържа следната информация за*/
+/*студентите: трите имена, курс, специалност, университет, електронна*/
+/*поща и телефонен номер.*/
+/*Декларирайте няколко конструктора за класа Student, които имат*/
+/*различни списъци с параметри (за цялостната информация за даден*/
+/*студент или част от нея). Данните, за които няма входна информация*/
+/*да се инициализират съответно с null или 0.*/
+/*Добавете статично поле в класа Student, в което се съхранява броя на*/
+/*създадените обекти от този клас.*/
+/*Добавете метод в класа Student, който извежда пълна информация за*/
+/*студента.*/
+/*Модифицирайте текущия код на класа Student така, че да капсулирате*/
+/*данните в класа чрез свойства.*/
+/*Напишете клас StudentTest, който да тества функционалността на класа*/
+/*Student.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Student {
+    char firstName[10];
+    char secondName[10];
+    char thirdName[10];
+    int curse;
+    char specialty[30];
+    char university[30];
+    char email[20];
+    int phoneNumber;
+};
+
+struct Student* makeStudent();
+struct Student* makeFullStudent(char*, char*, char*, int, char*, char*, char*, int);
+struct Student* studentArray(int);
+struct Student* resize(struct Student*);
+void printStudent(struct Student);
+void getName(struct Student*);
+void getStudyInfo(struct Student*);
+void getMail(struct Student*);
+void getPhone(struct Student*);
+
+int capacity = 2;
+int addedStudnets = 0;
+
+main()
+{
+    int n;
+    
+    printf("Enter number of students:");
+    scanf("%d", &n);
+    
+    struct Student *students = studentArray(capacity);
+
+    char firstName[10];
+    char secondName[10];
+    char thirdName[10];
+    int curse;
+    char specialty[30];
+    char university[30];
+    char email[20];
+    int phoneNumber;
+    
+    int i;
+    
+    for (i = 0; i < n; i++) {
+        if (i == capacity) {
+            students = resize(students);
+        }
+        printf("Enter first name: ");
+        scanf("%9s", firstName);
+        printf("Enter second name: ");
+        scanf("%9s", secondName);
+        printf("Enter last name: ");
+        scanf("%9s", thirdName);
+        printf("Enter curse: ");
+        scanf("%d", &curse);
+        printf("Enter specialty: ");
+        scanf("%29s", specialty);
+        printf("Enter university name: ");
+        scanf("%29s", university);
+        printf("Enter email: ");
+        scanf("%19s", email);
+        printf("Enter phoneNumber: ");
+        scanf("%d", &phoneNumber);
+        
+        struct Student *student = makeFullStudent(firstName, secondName, thirdName, curse, specialty, university, email, phoneNumber);
+        
+        students[i] = *student;
+        addedStudnets++;
+    }
+    
+    for (i = 0; i < n; i++) {
+        printStudent(students[i]);
+    }
+}
+
+struct Student* makeStudent()
+{
+    struct Student *student = (struct Student*)malloc(sizeof(struct Student));
+    
+    strcpy(student -> firstName, "no name");
+    strcpy(student -> secondName, "no name");
+    strcpy(student -> thirdName, "no name");
+    student -> curse = 0;
+    strcpy(student -> specialty, "empty");
+    strcpy(student -> university, "empty");
+    strcpy(student -> email, "empty");
+    student -> phoneNumber = 0;
+    return student;
+}
+
+struct Student* makeFullStudent(char fName[], char sName[], char tName[], int curse, char specialty[], char university[], char email[], int phoneNumber)
+{
+    struct Student *student = (struct Student*)malloc(sizeof(struct Student));
+    
+    strcpy(student -> firstName, fName);
+    strcpy(student -> secondName, sName);
+    strcpy(student -> thirdName, tName);
+    strcpy(student -> specialty, specialty);
+    strcpy(student -> university, university);
+    strcpy(student -> email, email);
+    student -> curse = curse;
+    student -> phoneNumber = phoneNumber;
+    
+    return student;
+}
+
+struct Student* resize(struct Student *students)
+{
+    capacity = capacity * 2 + 1;
+    struct Student *arr = (struct Student*)malloc(capacity * sizeof(struct Student));
+    
+    int i;
+    
+    for (i = 0; i < addedStudnets; i++) {
+        arr[i] = students[i];
+    }
+    
+    students = arr;
+    
+    free(arr);
+    
+    return students;
+}
+
+struct Student* studentArray(int n)
+{
+    struct Student *students = (struct Student*)malloc(n * sizeof(struct Student));
+    
+    return students;
+}
+
+void getName(struct Student *student)
+{
+    printf("%s %s %s\n", student -> firstName, student -> secondName, student -> thirdName);
+}
+
+void printStudent(struct Student student)
+{
+    printf("%s\n%s\n%s\n%d\n%s\n%s\n%s\n%d\n\n", student.firstName, student.secondName, student.thirdName, student.curse, student.specialty, student.university, student.email, student.phoneNumber);
+}

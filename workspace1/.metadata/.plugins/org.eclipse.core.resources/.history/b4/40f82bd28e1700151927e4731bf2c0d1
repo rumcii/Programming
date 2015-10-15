@@ -1,0 +1,13 @@
+package com.hackbulgaria.programming51.week2;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Person ivan = new Person("Ivan", "Ivanov", 21);
+		Auto audi = new Auto();
+		audi.owner = ivan.name;
+		System.out.println(audi);
+		
+	}
+
+}

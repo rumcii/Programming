@@ -1,0 +1,22 @@
+/*Силата на гравитационното поле на луната е приблизително 17% от*/
+/*това на земята. Напишете програма, която да изчислява тежестта на*/
+/*човек на луната, по дадената тежест на земята.*/
+
+#include <stdio.h>
+
+float moonWeight(float);
+
+main()
+{
+    float n;
+    
+    printf("\nEnter your weight: ");
+    scanf("%f", &n);
+    
+    printf("\nYour weight on the moon is: %.2f\n\n", moonWeight(n));
+}
+
+float moonWeight(float n)
+{
+    return n - (n * 17/100);
+}

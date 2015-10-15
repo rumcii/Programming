@@ -1,0 +1,3 @@
+Build a new program that prompts a user for data and
+determines a commission using the following formula:
+Commission = Rate * (Sales Price – Cost).

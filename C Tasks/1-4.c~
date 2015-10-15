@@ -1,0 +1,14 @@
+/*Write a program to print the corresponding Celsius to Fahrenheit table*/
+
+#include <stdio.h>
+
+main()
+{
+    int celsius;
+    int fahr = 0;
+    
+    for (celsius = 0; celsius < 100; celsius += 20) {
+        fahr = (9 * celsius / 5.0) + 32;
+        printf("%d\t%d\n", celsius, fahr);
+    }
+}

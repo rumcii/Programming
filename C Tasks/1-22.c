@@ -1,0 +1,54 @@
+/*Exercise 1-22. Write a program to ``fold'' long input lines into two or more shorter lines after*/
+/*the last non-blank character that occurs before the n-th column of input. Make sure your*/
+/*program does something intelligent with very long lines, and if there are no blanks or tabs*/
+/*before the specified column.*/
+
+
+#include <stdio.h>
+
+int cahrCounter(char[]);
+int arrLength(char[]);
+
+char result[1000];
+
+main()
+{
+    int c;
+    
+    int i = 0;
+    int n = 5;
+    
+    while ((c = getchar()) != EOF) {
+        if (charCounter(result) >= n && (c == '\n' || c == '\t' || c == ' ')) {
+            c = '\n';
+        }
+        
+        result[i] = c;
+        i++;
+    }
+    
+    printf("%s", result);
+}
+
+int charCounter(char temp[])
+{
+    int counter = 0;
+    int i;
+    
+    for (i = 0; i < arrLength(temp); i++) {
+        counter++;
+    }
+    
+    return counter;
+}
+
+int arrLength(char temp[])
+{
+    int i = 0;
+    
+    while (temp[i] != '\0') {
+        i++;
+    }
+    return i;
+}
+

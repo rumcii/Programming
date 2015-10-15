@@ -1,0 +1,31 @@
+/*Задача 6 - Сумата на числата от 1 до N*/
+
+/*Във файл, с име `sum_n.py`, напишете програма, която:*/
+
+/*1. Чете едно цяло число `N` от потребителя.*/
+/*2. Принтира на екрана сумата на всички цели числа между `1` и `N`*/
+
+/*Примери:*/
+
+/*```*/
+/*Enter N: 10*/
+/*55*/
+/*```*/
+
+#include <stdio.h>
+
+main()
+{
+	int i;
+	int number;
+	int result = 0;
+	
+	printf("Enter number: ");
+	scanf("%d", &number);
+	
+	for (i = 1; i <= number; i++) {
+		result += i;
+	}
+	
+	printf("The sum of all numbers in interval from 1 to %d is: %d", number, result);
+}
