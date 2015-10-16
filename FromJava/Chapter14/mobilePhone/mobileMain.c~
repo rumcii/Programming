@@ -36,6 +36,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "mobileStructures.h"
 /*#include "mobileData.c"*/
 /*#include "batteryData.c"*/
@@ -43,31 +44,67 @@
 
 main()
 {
-    struct Battery battery;
-    
-    BatteryFullConstructor(&battery, "BL-4j", 10, 50);
-    
-    struct Display display;
-    
-    DisplayFullConstructor(&display, 3.5, 256000);
-    printf("%.2f\t%d\n", display.size, display.colors);
-    struct Mobile mobile;
-    
-    MobileConstructor(&mobile, "Nokia", "C6-00", "Rumen", "12.2");
-    printf("%f\n", mobile.price);
-    
-    mobile.battery = &battery;
-    mobile.display = &display;
-    
-    PrintMobile(&mobile);
-    
-/*    struct Mobile mobile[3];*/
+/*    struct Battery battery;*/
 /*    */
-/*    int i;*/
+/*    BatteryFullConstructor(&battery, "BL-4j", 10, 50);*/
 /*    */
-/*    char */
+/*    struct Display display;*/
 /*    */
-/*    for (i = 0; i < 3; i++) {*/
-/*        */
-/*    }*/
+/*    DisplayFullConstructor(&display, 3.5, 256000);*/
+/*    printf("%.2f\t%d\n", display.size, display.colors);*/
+/*    struct Mobile mobile;*/
+/*    */
+/*    MobileConstructor(&mobile, "Nokia", "C6-00", "Rumen", "12.2");*/
+/*    printf("%f\n", mobile.price);*/
+/*    mobile.price = 12.2;*/
+/*    mobile.battery = &battery;*/
+/*    mobile.display = &display;*/
+/*    */
+/*    PrintMobile(&mobile);*/
+    
+    struct Mobile mobileArr[3];
+    
+    int i;
+    
+    char batteryModel[10];
+    int talkTime;
+    int idleTime;
+    
+    float displaySize;
+    int displayColors;
+    
+    char mobileModel[10];
+    char mobileBrand[10];
+    char mobileOwner[10];
+    double price;
+    
+    struct Battery *battery;
+    
+    for (i = 0; i < 3; i++) {
+        printf("Enter mobile brand: ");
+        scanf("%9s", mobileBrand);
+        printf("Enter moobile model: ");
+        scanf("%9s", mobileModel);
+        printf("Enter mobile owner: ");
+        scanf("%9s", mobileOwner);
+        printf("Enter mobile price: ");
+        scnaf("%f", &price);
+        
+        printf("Enter batterey model: ");
+        scanf("%9s", batteryModel);
+        printf("Enter battery talkTime: ");
+        scanf("%d", &talkTime);
+        printf("Enter battery idleTime: ");
+        scanf("%d", &idleTime);
+        
+        pritf("Enter display size: ");
+        scanf("%f", &displaySize);
+        printf("Enter display colors: ");
+        scanf("%d", &displayColors);
+        
+        battery = makeBattery(batteryModel, talkTime, idleTime);
+        struct Display *display = makeDisplay(displaySize, displayColors);
+        struct Mobile *mobile = makeMobile(mobileBrand, mobileModel, mobileOwner, price, battery, display);
+        mobileArr[i] = *mobile;
+    }
 }

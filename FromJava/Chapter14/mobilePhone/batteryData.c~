@@ -1,14 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <string.h>
 #include "mobileStructures.h"
 
 void BatteryConstructor(struct Battery*);
 void BatteryFullConstructor(struct Battery*, char*, int, int);
-char* getBatteryModel(struct Battery*);
+char* getBatterybatteryModel(struct Battery*);
 int getBatteryIdleTime(struct Battery*);
 int getBatteryTalkTime(struct Battery*);
-void setBatteryModel(struct Battery*, char*);
+void setBatterybatteryModel(struct Battery*, char*);
 void setBatteryIdleTime(struct Battery*, int);
 void setBatteryTalkTime(struct Battery*, int);
 struct Battery* makeBattery(char*, int, int);
@@ -16,22 +16,22 @@ void PrintBattery(struct Battery*);
 
 void BatteryConstructor(struct Battery *battery)
 {
-    strcpy(battery -> model, "no model");
+    strcpy(battery -> batteryModel, "no batteryModel");
     battery -> talkTime = 0;
     battery -> idleTime = 0;
 }
 
-void BatteryFullConstructor(struct Battery *battery, char model[], int talkTime, int idleTime)
+void BatteryFullConstructor(struct Battery *battery, char batteryModel[], int talkTime, int idleTime)
 {
-    strcpy(battery -> model, model);
+    strcpy(battery -> batteryModel, batteryModel);
     battery -> talkTime = talkTime;
     battery -> idleTime = idleTime;
 }
 
-struct Battery* makeBattery(char model[], int talkTime, int idleTime)
+struct Battery* makeBattery(char batteryModel[], int talkTime, int idleTime)
 {
     struct Battery *temp = (struct Battery*)malloc(sizeof(struct Battery));
-    strcpy(temp -> model, model);
+    strcpy(temp -> batteryModel, batteryModel);
     temp -> idleTime - idleTime;
     temp -> talkTime = talkTime;
     return temp;
@@ -40,14 +40,14 @@ struct Battery* makeBattery(char model[], int talkTime, int idleTime)
 void PrintBattery(struct Battery *battery)
 {
     printf("\n\tBattery info:\n");
-    printf("Battery model: %s\n", battery -> model);
+    printf("Battery batteryModel: %s\n", battery -> batteryModel);
     printf("Battery talk time: %d\n", battery -> talkTime);
     printf("Battery idle time: %d\n\n", battery -> idleTime);
 }
 
-char* getBatteryModel(struct Battery *battery)
+char* getBatterybatteryModel(struct Battery *battery)
 {
-    return battery -> model;
+    return battery -> batteryModel;
 }
 
 int getBatteryIdleTime(struct Battery *battery)
@@ -70,7 +70,7 @@ void setBatteryTalkTime(struct Battery *battery, int talkTime)
     battery -> talkTime = talkTime;
 }
 
-void setBatteryModel(struct Battery *battery, char model[])
+void setBatterybatteryModel(struct Battery *battery, char batteryModel[])
 {
-    strcpy(battery -> model, model);
+    strcpy(battery -> batteryModel, batteryModel);
 }

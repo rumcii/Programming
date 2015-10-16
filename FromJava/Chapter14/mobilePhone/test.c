@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-int sum(int a, int b)
+int main()
 {
-    return a + b;
+    int a = 5;
+    int *p;
+    *p = &a;
+    printf("%d\n", *p);
 }

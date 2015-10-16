@@ -1,29 +1,9 @@
 #include <stdio.h>
 
-struct a {
-    int number;
-};
-
-struct b {
-    int number;
-    struct a *a1;
-};
-
-main()
+int main()
 {
-    int num1;
-    int num2;
-    
-    printf("Enter first number: ");
-    scanf("%d", &num1);
-    printf("Enter second number: ");
-    scanf("%d", &num2);
-    
-    struct a a1;
-    a1.number = num1;
-    printf("%d\n", a1.number);
-    
-    struct b b1;
-    b1.number = num2;
-    printf("%d\n", b1.number);
+    int a = 5;
+    int *p;
+    *p = a;
+    printf("%d\n", *p);
 }
